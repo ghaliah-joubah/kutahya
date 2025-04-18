@@ -1,0 +1,17 @@
+importScripts("https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js");
+importScripts("https://www.gstatic.com/firebasejs/8.10.1/firebase-messaging.js");
+
+firebase.initializeApp({});
+
+const messaging = firebase.messaging();
+
+messaging.onBackgroundMessage((payload) => {
+    console.log("fb [firebase-messaging-sw.js] Received background message ",payload);
+    const notificationTitle = payload?.data?.title;
+    const notificationOptions = {
+        body: payload?.data?.body,
+        icon: payload?.data?.icon??"/img/logo.svg",
+    };
+    if(notificationTitle && notificationOptions)
+        self.registration.showNotification(notificationTitle, notificationOptions);
+});
