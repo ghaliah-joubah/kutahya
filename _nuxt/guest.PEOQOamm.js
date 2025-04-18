@@ -1,1 +1,0 @@
-import{a5 as o,a4 as r,Y as n}from"./entry.jkyLwXfk.js";function g(l,s){const e=n();{var t=localStorage.getItem("token")!=null;const a=o();if(a.middleware="guest",t)return r(e.$localePath("/"))}}export{g as default};
